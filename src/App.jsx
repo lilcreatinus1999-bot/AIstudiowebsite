@@ -20,28 +20,28 @@ if (import.meta.env.DEV) {
 const projects = [
   {
     name: 'Aetheris Voyage',
-    tags: ['AI Strategy', 'Web Design', 'Launch Assets'],
+    tags: ['Landing Page', 'Visual Direction', 'Launch Design'],
     tone: 'from-white/20 via-white/5 to-transparent',
     preview: 'https://motionsites.ai/assets/hero-aetheris-voyage-preview-BGJn1z4t.gif',
     alt: 'Aetheris Voyage project preview',
   },
   {
     name: 'ASME',
-    tags: ['Creative Direction', 'Conversion UX', 'AI Systems'],
+    tags: ['Conversion UX', 'Brand Website', 'AI Workflow'],
     tone: 'from-white/15 via-white/10 to-transparent',
     preview: 'https://motionsites.ai/assets/hero-asme-preview-B_nGDnTP.gif',
     alt: 'ASME project preview',
   },
   {
     name: 'Impressive',
-    tags: ['Landing Pages', 'Motion UI', 'Brand Systems'],
+    tags: ['Website Design', 'Motion UI', 'Brand System'],
     tone: 'from-white/10 via-white/5 to-white/15',
     preview: 'https://motionsites.ai/assets/hero-impressive-preview-BCJtlSs2.gif',
     alt: 'Impressive project preview',
   },
   {
     name: 'CodeNest',
-    tags: ['Content Systems', 'Automation', 'Design Ops'],
+    tags: ['SaaS Website', 'Frontend Build', 'Design System'],
     tone: 'from-white/25 via-white/5 to-transparent',
     preview: 'https://motionsites.ai/assets/hero-codenest-preview-Cgppc2qV.gif',
     alt: 'CodeNest project preview',
@@ -50,28 +50,28 @@ const projects = [
 
 const services = [
   {
-    title: 'AI Web Strategy',
-    items: ['Market research', 'Offer positioning', 'Page architecture', 'Audience angles', 'Creative direction'],
+    title: 'Web Strategy',
+    items: ['Offer positioning', 'Audience research', 'Page architecture', 'Conversion messaging', 'Creative direction'],
   },
   {
     title: 'Premium Web Design',
-    items: ['Landing pages', 'Interface systems', 'Motion pacing', 'Responsive layouts', 'Brand-led visuals'],
+    items: ['Landing pages', 'Brand websites', 'Interface systems', 'Responsive layouts', 'Cinematic visuals'],
   },
   {
     title: 'Launch Assets',
-    items: ['Campaign pages', 'Paid social assets', 'Product sections', 'Founder-led content', 'Conversion creatives'],
+    items: ['Campaign pages', 'Product sections', 'Paid social assets', 'Founder-led content', 'Conversion creatives'],
   },
   {
-    title: 'AI Content Systems',
-    items: ['Monthly content plans', 'Batch production', 'Creative testing', 'Performance feedback', 'Repeatable formats'],
+    title: 'AI-Assisted Systems',
+    items: ['Content structure', 'Reusable sections', 'Creative testing', 'Launch workflows', 'Repeatable formats'],
   },
 ];
 
 const navItems = [
-  { label: 'Webs', href: '#work' },
-  { label: 'AI Sites', href: '#work' },
-  { label: 'Designs', href: '#services' },
-  { label: 'Consult', href: '#contact' },
+  { label: 'Work', href: '#work' },
+  { label: 'Services', href: '#services' },
+  { label: 'Approach', href: '#approach' },
+  { label: 'Contact', href: '#contact' },
 ];
 
 const companyLinks = [
@@ -160,7 +160,7 @@ function App() {
           href="#contact"
           className="liquid-glass rounded-full px-5 py-2 text-sm font-light text-white transition-colors hover:bg-white/10"
         >
-          Begin
+          Book a Call
         </a>
       </nav>
 
@@ -176,17 +176,17 @@ function App() {
             className="mb-8 rounded-full bg-white/10 p-1 text-sm font-light text-white backdrop-blur-sm transition-colors hover:bg-white/15"
           >
             <span className="block rounded-full bg-white/90 px-5 py-2 text-neutral-950 backdrop-blur-md">
-              AI Web Design House
+              AI Web Design Studio
             </span>
           </a>
 
           <h1 className="max-w-4xl text-[48px] font-light leading-[0.95] tracking-[-0.055em] text-white sm:text-[64px]">
-            <span className="block">AI studio designs webs</span>
-            <span className="block font-instrument italic tracking-[-0.035em]">sites with AI power!</span>
+            <span className="block">Premium AI-powered websites</span>
+            <span className="block font-instrument italic tracking-[-0.035em]">that launch faster and convert better</span>
           </h1>
 
           <p className="mt-7 max-w-2xl text-base font-light leading-7 text-white/75 sm:text-lg">
-            We blend strategy, design, and AI systems to create converting websites that look premium, launch faster, and help your brand turn visitors into clients online.
+            We design and build cinematic landing pages, AI-assisted websites, and conversion-focused digital experiences for founders, creators, and modern businesses.
           </p>
 
           <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row">
@@ -194,13 +194,13 @@ function App() {
               href="#contact"
               className="liquid-glass-strong rounded-full px-8 py-4 text-sm font-medium uppercase tracking-[0.16em] text-white transition-colors hover:bg-white/10"
             >
-              Build My AI Website!
+              Book a Free Call
             </a>
             <a
               href="#work"
               className="liquid-glass rounded-full px-8 py-4 text-sm font-medium uppercase tracking-[0.16em] text-white transition-colors hover:bg-white/10"
             >
-              View AI Work
+              View Selected Work
             </a>
           </div>
         </div>
@@ -211,32 +211,32 @@ function App() {
           <div>
             <RevealText as="p" className="mb-8 text-sm font-light uppercase tracking-[0.32em] text-white/60">Our Approach</RevealText>
             <h2 className="text-reveal max-w-5xl text-[44px] font-light leading-[1.02] tracking-[-0.055em] text-white sm:text-[68px] lg:text-[82px]">
-              {['We', 'do', 'not', 'just', 'design', 'pages.'].map((word, index) => (
+              {['We', 'build', 'premium', 'websites'].map((word, index) => (
                 <span key={word} className="reveal-word" style={{ '--delay': `${index * 45}ms` }}>{word} </span>
               ))}
-              {['We', 'build', 'intelligent', 'web', 'systems'].map((word, index) => (
-                <span key={word} className="reveal-word font-instrument italic tracking-[-0.02em]" style={{ '--delay': `${(index + 6) * 45}ms` }}>{word} </span>
+              {['that', 'make', 'your', 'brand', 'feel', 'credible'].map((word, index) => (
+                <span key={word} className="reveal-word font-instrument italic tracking-[-0.02em]" style={{ '--delay': `${(index + 4) * 45}ms` }}>{word} </span>
               ))}
-              {['for', 'brands', 'that', 'need', 'to', 'look', 'premium,', 'launch', 'faster,', 'and', 'convert', 'with', 'clarity.'].map((word, index) => (
-                <span key={`${word}-${index}`} className="reveal-word" style={{ '--delay': `${(index + 11) * 45}ms` }}>{word}{index === 12 ? '' : ' '}</span>
+              {['and', 'turn', 'visitors', 'into', 'clients', 'with', 'clarity.'].map((word, index) => (
+                <span key={`${word}-${index}`} className="reveal-word" style={{ '--delay': `${(index + 10) * 45}ms` }}>{word}{index === 6 ? '' : ' '}</span>
               ))}
             </h2>
             <RevealText as="p" className="mt-8 max-w-4xl text-lg font-light leading-8 text-white/75 sm:text-xl">
-              Through sharp strategy, AI-assisted production, cinematic design, and conversion-focused execution, we turn raw ideas into digital experiences that earn trust and make brands impossible to ignore.
+              From positioning and visual direction to responsive frontend delivery, we turn your offer into a polished web experience built for launch.
             </RevealText>
             <a
               href="#services"
               className="scroll-reveal liquid-glass-strong mt-10 inline-flex rounded-full px-8 py-4 text-sm font-medium uppercase tracking-[0.16em] text-white transition-colors hover:bg-white/10"
             >
-              Discover our approach
+              See Our Process
             </a>
           </div>
 
           <div className="liquid-glass rounded-[28px] p-6 transition-colors hover:bg-white/5">
-            <p className="text-sm font-light uppercase tracking-[0.28em] text-white/50">Built With</p>
+            <p className="text-sm font-light uppercase tracking-[0.28em] text-white/50">Built For</p>
             <p className="mt-10 font-instrument text-5xl italic leading-none text-white">AI</p>
-            <p className="mt-4 text-sm font-light leading-6 text-white/70">
-              Strategy, design, content, and launch systems shaped into one premium web presence.
+            <p className="mt-4 text-base font-light leading-7 text-white/75">
+              Founders and teams who need a premium web presence without months of production.
             </p>
           </div>
         </div>
@@ -281,7 +281,7 @@ function App() {
               href="#work"
               className="liquid-glass-strong inline-flex rounded-full px-8 py-4 text-sm font-medium uppercase tracking-[0.16em] text-white transition-colors hover:bg-white/10"
             >
-              View all projects
+              Explore Selected Work
             </a>
           </div>
         </div>
@@ -293,7 +293,7 @@ function App() {
             <p className="mb-5 text-sm font-light uppercase tracking-[0.32em] text-white/50">Services</p>
             <h2 className="text-[44px] font-light leading-none tracking-[-0.055em] text-white sm:text-[64px]">What We Do</h2>
             <p className="mt-6 text-base font-light leading-7 text-white/70 sm:text-lg">
-              We combine web design, AI workflows, content systems, and launch thinking into premium digital assets built to convert.
+              Strategy, design, and responsive frontend builds for brands that need to look credible, launch faster, and convert more clearly.
             </p>
           </div>
 
@@ -301,7 +301,7 @@ function App() {
             {services.map((service) => (
               <article key={service.title} className="liquid-glass rounded-[30px] p-6 transition-colors hover:bg-white/5">
                 <h3 className="text-2xl font-light tracking-[-0.035em] text-white">{service.title}</h3>
-                <ul className="mt-6 space-y-3 text-sm font-light leading-6 text-white/70">
+                <ul className="mt-6 space-y-3 text-base font-light leading-7 text-white/75">
                   {service.items.map((item) => (
                     <li key={item} className="flex gap-3">
                       <span className="mt-2 h-1 w-1 flex-none rounded-full bg-white/70" aria-hidden="true" />
@@ -330,9 +330,9 @@ function App() {
 
       <section id="client-voices" className="relative z-10 bg-black px-4 py-28 sm:px-6 lg:px-8 lg:py-36">
         <div className="liquid-glass mx-auto max-w-6xl rounded-[38px] p-8 transition-colors hover:bg-white/[0.03] sm:p-12 lg:p-16">
-          <p className="text-sm font-light uppercase tracking-[0.32em] text-white/50">Client Words</p>
+          <p className="text-sm font-light uppercase tracking-[0.32em] text-white/50">Client Voices</p>
           <blockquote className="mt-10 max-w-5xl text-[34px] font-light leading-[1.12] tracking-[-0.045em] text-white sm:text-[52px]">
-            Launching with AISTUDIO changed how people saw our brand. In just a few weeks, our AI-built web presence started attracting better leads, stronger conversations, and the kind of attention we had been trying to create for months.
+            Working with AISTUDIO changed how people understood our offer. Within weeks, our new website made the brand feel sharper, easier to trust, and easier for the right clients to act on.
           </blockquote>
           <div className="mt-12 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-4">
@@ -355,16 +355,16 @@ function App() {
       <section id="contact" className="relative z-10 bg-black px-4 py-28 sm:px-6 lg:px-8 lg:py-36">
         <div className="liquid-glass-strong mx-auto max-w-6xl rounded-[42px] px-6 py-20 text-center sm:px-12 lg:px-20">
           <h2 className="mx-auto max-w-4xl text-[42px] font-light leading-[1.02] tracking-[-0.055em] text-white sm:text-[68px]">
-            Ready to make your website impossible to ignore?
+            Ready to make your website your strongest sales asset?
           </h2>
           <p className="mt-6 font-instrument text-3xl italic leading-none text-white sm:text-5xl">
-            Let's make attention feel effortless.
+            Look premium. Launch faster. Convert clearly.
           </p>
           <a
             href="mailto:@fartanses"
             className="liquid-glass-strong mt-10 inline-flex rounded-full px-8 py-4 text-sm font-medium uppercase tracking-[0.16em] text-white transition-colors hover:bg-white/10"
           >
-            Start a project
+            Book a Free Call
           </a>
         </div>
       </section>
