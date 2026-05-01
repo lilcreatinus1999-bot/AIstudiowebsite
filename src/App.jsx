@@ -1,6 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 const HERO_VIDEO_SRC = '/hero-video.mp4?v=10000';
+const VIDEO_FADE_DURATION = 500;
+const VIDEO_FADE_OUT_REMAINING = 0.55;
 
 if (import.meta.env.DEV) {
   setTimeout(() => {
@@ -107,7 +109,103 @@ function RevealText({ as: Component = 'span', className = '', children }) {
   );
 }
 
+function getVideoOpacity(video) {
+  const opacity = Number.parseFloat(video.style.opacity || window.getComputedStyle(video).opacity);
+
+  return Number.isFinite(opacity) ? opacity : 1;
+}
+
+function animateVideoOpacity(video, fadeState, targetOpacity, onComplete) {
+  if (fadeState.frame) {
+    cancelAnimationFrame(fadeState.frame);
+  }
+
+  const startOpacity = getVideoOpacity(video);
+  const startTime = performance.now();
+
+  const tick = (now) => {
+    const progress = Math.min((now - startTime) / VIDEO_FADE_DURATION, 1);
+    const nextOpacity = startOpacity + (targetOpacity - startOpacity) * progress;
+
+    video.style.opacity = String(nextOpacity);
+
+    if (progress < 1) {
+      fadeState.frame = requestAnimationFrame(tick);
+      return;
+    }
+
+    fadeState.frame = 0;
+    video.style.opacity = String(targetOpacity);
+    onComplete?.();
+  };
+
+  fadeState.frame = requestAnimationFrame(tick);
+}
+
+function setupSeamlessVideoFade(video) {
+  const fadeState = { frame: 0, fadingOut: false, resetTimer: 0, destroyed: false };
+
+  video.loop = false;
+  video.style.opacity = '0';
+
+  const fadeIn = () => {
+    fadeState.fadingOut = false;
+    animateVideoOpacity(video, fadeState, 1);
+  };
+
+  const handleTimeUpdate = () => {
+    if (!Number.isFinite(video.duration) || video.duration <= 0 || fadeState.fadingOut) {
+      return;
+    }
+
+    if (video.duration - video.currentTime <= VIDEO_FADE_OUT_REMAINING) {
+      fadeState.fadingOut = true;
+      animateVideoOpacity(video, fadeState, 0);
+    }
+  };
+
+  const handleEnded = () => {
+    video.style.opacity = '0';
+
+    fadeState.resetTimer = window.setTimeout(() => {
+      if (fadeState.destroyed) {
+        return;
+      }
+
+      video.currentTime = 0;
+      video.play().catch(() => {});
+      fadeIn();
+    }, 100);
+  };
+
+  video.addEventListener('loadeddata', fadeIn);
+  video.addEventListener('timeupdate', handleTimeUpdate);
+  video.addEventListener('ended', handleEnded);
+
+  if (video.readyState >= 2) {
+    fadeIn();
+  }
+
+  return () => {
+    fadeState.destroyed = true;
+    video.removeEventListener('loadeddata', fadeIn);
+    video.removeEventListener('timeupdate', handleTimeUpdate);
+    video.removeEventListener('ended', handleEnded);
+
+    if (fadeState.frame) {
+      cancelAnimationFrame(fadeState.frame);
+    }
+
+    if (fadeState.resetTimer) {
+      clearTimeout(fadeState.resetTimer);
+    }
+  };
+}
+
 function App() {
+  const heroVideoRef = useRef(null);
+  const showcaseVideoRef = useRef(null);
+
   useEffect(() => {
     const revealItems = document.querySelectorAll('.scroll-reveal, .text-reveal');
     const observer = new IntersectionObserver(
@@ -128,13 +226,21 @@ function App() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const cleanups = [heroVideoRef.current, showcaseVideoRef.current]
+      .filter(Boolean)
+      .map((video) => setupSeamlessVideoFade(video));
+
+    return () => cleanups.forEach((cleanup) => cleanup());
+  }, []);
+
   return (
     <main className="relative min-h-screen overflow-hidden bg-black font-barlow text-white">
       <video
+        ref={heroVideoRef}
         className="hero-video absolute inset-0 z-0 h-full w-full object-cover"
         src={HERO_VIDEO_SRC}
         autoPlay
-        loop
         muted
         playsInline
         preload="auto"
@@ -317,11 +423,11 @@ function App() {
 
       <section id="video-showcase" className="relative z-10 h-[70vh] min-h-[520px] w-full overflow-hidden bg-black">
         <video
+          ref={showcaseVideoRef}
           className="section-video-fade absolute inset-0 h-full w-full object-cover"
           src="/untitled_fal-ai_kling-video_v2.6_pro_image-to-video_2026-04-29_19-23-29.mp4"
           autoPlay
           muted
-          loop
           playsInline
           preload="auto"
           aria-hidden="true"
