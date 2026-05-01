@@ -125,7 +125,8 @@ function animateVideoOpacity(video, fadeState, targetOpacity, onComplete) {
 
   const tick = (now) => {
     const progress = Math.min((now - startTime) / VIDEO_FADE_DURATION, 1);
-    const nextOpacity = startOpacity + (targetOpacity - startOpacity) * progress;
+    const easedProgress = 1 - Math.pow(1 - progress, 3);
+    const nextOpacity = startOpacity + (targetOpacity - startOpacity) * easedProgress;
 
     video.style.opacity = String(nextOpacity);
 
